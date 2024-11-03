@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/UILayout.cshtml";
+}
+
+@await Component.InvokeAsync("AboutViewComponents/_AboutMentorComponentPartial")
+
+@await Component.InvokeAsync("AboutViewComponents/_AboutStatisticsComponentPartial")
+
+@await Component.InvokeAsync("AboutViewComponents/_TeamMembersComponentPartial")
+
+@await Component.InvokeAsync("AboutViewComponents/_AboutSkillsComponentPartial")

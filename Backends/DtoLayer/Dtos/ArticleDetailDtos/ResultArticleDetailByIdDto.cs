@@ -1,0 +1,11 @@
+
+
+namespace DtoLayer.Dtos.ArticleDetailDtos
+{
+    public class ResultArticleDetailByIdDto
+    {
+        public int ArticleDetailId { get; set; }
+        public int ArticleId { get; set; }
+        public int CategoryId { get; set; }
+    }
+}

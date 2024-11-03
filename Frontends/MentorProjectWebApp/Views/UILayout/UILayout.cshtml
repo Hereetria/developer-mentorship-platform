@@ -1,0 +1,25 @@
+﻿﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutHeadVComponentPartial")
+
+        @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutCssVComponentPartial")
+
+    </head>
+<body>
+    @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutPageTitleVComponentPartial")İ
+
+    @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutNavbarVComponentPartial")
+
+    @RenderBody()
+
+    @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutFooterVComponentPartial")
+
+    @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutJavaScriptVComponentPartial")
+
+</body>
+</html>
