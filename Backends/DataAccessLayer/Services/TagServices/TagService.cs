@@ -4,12 +4,12 @@ using AutoMapper;
 using EntityLayer.Entities;
 using DataAccessLayer.Contexts;
 using DtoLayer.Dtos.TagDtos;
-using DataAccessLayer.Repositories;
 using DataAccessLayer.Services.TagServices;
+using DataAccessLayer.Repositories.Concrete;
 
 namespace DataAccessLayer.Services.TagServices
 {
-    
+
     public class TagService : GenericRepository<Tag, CreateTagDto, UpdateTagDto, ResultTagDto, ResultTagByIdDto, int>, ITagService
 
     {

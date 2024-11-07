@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.MentorSocialMediaServices
 {
     using MentorProjectWebApp.Dtos.MentorSocialMediaDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class MentorSocialMediaService : GenericRepository<CreateMentorSocialMediaDto, UpdateMentorSocialMediaDto, ResultMentorSocialMediaDto, ResultMentorSocialMediaByIdDto, int>, IMentorSocialMediaService

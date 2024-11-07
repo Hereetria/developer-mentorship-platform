@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.TagServices
 {
     using MentorProjectWebApp.Dtos.TagDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class TagService : GenericRepository<CreateTagDto, UpdateTagDto, ResultTagDto, ResultTagByIdDto, int>, ITagService

@@ -1,5 +1,5 @@
 ﻿using MentorProjectWebApp.Dtos.SkillDtos;
-using MentorProjectWebApp.Repositories;
+using MentorProjectWebApp.Repositories.Concrete;
 
 namespace MentorProjectWebApp.Services.SkillServices
 {

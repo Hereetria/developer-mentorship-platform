@@ -1,10 +1,14 @@
-﻿namespace MentorProjectWebApp.Services.MentorSocialMediaServices
+﻿using MentorProjectWebApp.Dtos.MentorDtos;
+using MentorProjectWebApp.Dtos.MentorSocialMediaDtos;
+using MentorProjectWebApp.Dtos.SocialMediaDtos;
+using MentorProjectWebApp.Repositories.Abstract;
+
+namespace MentorProjectWebApp.Services.MentorSocialMediaServices
 {
-    using MentorProjectWebApp.Dtos.MentorSocialMediaDtos;
-    using MentorProjectWebApp.Repositories;
-
-    public interface IMentorSocialMediaService : IGenericRepository<CreateMentorSocialMediaDto, UpdateMentorSocialMediaDto, ResultMentorSocialMediaDto, ResultMentorSocialMediaByIdDto, int>
+    public interface IMentorSocialMediaService : IGenericJunctionRepository<ResultMentorSocialMediaDto, CreateMentorSocialMediaDto, UpdateMentorSocialMediaDto>
     {
+        Task<List<ResultMentorDto>> GetMentorListBySocialMediaIdAsync(int socialMediaId);
+        Task<List<ResultSocialMediaDto>> GetSocialMediaListByMentorIdAsync(int mentorId);
+        Task DeleteMentorSocialMediaAsync(DeleteMentorSocialMediaDto deleteDto);
     }
-
 }

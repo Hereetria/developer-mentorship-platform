@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.CategoryServices
 {
     using MentorProjectWebApp.Dtos.CategoryDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class CategoryService : GenericRepository<CreateCategoryDto, UpdateCategoryDto, ResultCategoryDto, ResultCategoryByIdDto, int>, ICategoryService

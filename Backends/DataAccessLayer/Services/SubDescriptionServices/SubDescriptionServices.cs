@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Contexts;
-using DataAccessLayer.Repositories;
+using DataAccessLayer.Repositories.Concrete;
 using DtoLayer.Dtos.SubDescriptionDtos;
 using EntityLayer.Entities;
 using System;

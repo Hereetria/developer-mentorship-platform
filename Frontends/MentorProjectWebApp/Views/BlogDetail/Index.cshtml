@@ -4,10 +4,21 @@
     Layout = "~/Views/UILayout/UILayout.cshtml";
 }
 
-@await Component.InvokeAsync("BlogDetailViewComponents/_BlogDetailArticleComponentPartial")
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
 
-@await Component.InvokeAsync("BlogDetailViewComponents/_BlogDetailCommentsComponentPartial")
+@await Component.InvokeAsync("_BlogDetailArticleComponentPartial")
 
-@await Component.InvokeAsync("BlogDetailViewComponents/_BlogDetailCommentFormComponentPartial")
+@await Component.InvokeAsync("_BlogDetailCommentsComponentPartial")
 
-@await Component.InvokeAsync("BlogDetailViewComponents/_BlogSidebarComponentPartial")
+@await Component.InvokeAsync("_BlogDetailCommentFormComponentPartial")
+
+</div>
+<div class="col-lg-4 sidebar">
+
+@await Component.InvokeAsync("_BlogSidebarComponentPartial")
+
+        </div>
+    </div>
+</div>

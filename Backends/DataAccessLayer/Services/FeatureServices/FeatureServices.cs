@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Contexts;
-using DataAccessLayer.Repositories;
+using DataAccessLayer.Repositories.Concrete;
 using DtoLayer.Dtos.FeatureDtos;
 using EntityLayer.Entities;
 using System;

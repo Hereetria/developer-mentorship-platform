@@ -5,21 +5,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutHeadVComponentPartial")
+        @await Component.InvokeAsync("_UILayoutHeadComponentPartial")
 
-        @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutCssVComponentPartial")
+        @await Component.InvokeAsync("_UILayoutCssComponentPartial")
 
     </head>
 <body>
-    @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutPageTitleVComponentPartial")İ
+    @await Component.InvokeAsync("_UILayoutPageTitleComponentPartial")
 
-    @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutNavbarVComponentPartial")
+    @await Component.InvokeAsync("_UILayoutNavbarComponentPartial")
 
     @RenderBody()
 
-    @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutFooterVComponentPartial")
+    @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
 
-    @await Component.InvokeAsync("UILayoutViewComponents/_UILayoutJavaScriptVComponentPartial")
+    @await Component.InvokeAsync("_UILayoutJavaScriptComponentPartial")
 
 </body>
 </html>

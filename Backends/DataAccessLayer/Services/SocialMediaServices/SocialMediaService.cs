@@ -4,12 +4,12 @@ using AutoMapper;
 using EntityLayer.Entities;
 using DataAccessLayer.Contexts;
 using DtoLayer.Dtos.SocialMediaDtos;
-using DataAccessLayer.Repositories;
 using DataAccessLayer.Services.SocialMediaServices;
+using DataAccessLayer.Repositories.Concrete;
 
 namespace DataAccessLayer.Services.SocialMediaServices
 {
-    
+
     public class SocialMediaService : GenericRepository<SocialMedia, CreateSocialMediaDto, UpdateSocialMediaDto, ResultSocialMediaDto, ResultSocialMediaByIdDto, int>, ISocialMediaService
 
     {

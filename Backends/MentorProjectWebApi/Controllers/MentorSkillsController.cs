@@ -37,24 +37,6 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetMentorSkillById(int id)
-        {
-            try
-            {
-                var value = await _mentorSkillService.GetByIdAsync(id);
-                if (value == null)
-                {
-                    return NotFound($"MentorSkill information not found: {id}");
-                }
-                return Ok(value);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "An error occurred while retrieving mentorSkill information: " + ex.Message);
-            }
-        }
-
         [HttpPost]
         public async Task<IActionResult> CreateMentorSkill(CreateMentorSkillDto createMentorSkillDto)
             {
@@ -69,12 +51,17 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMentorSkill(int id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteMentorSkill(DeleteMentorSkillDto deleteDto)
         {
             try
             {
-                await _mentorSkillService.DeleteAsync(id);
+                if (deleteDto == null)
+                {
+                    return BadRequest("DeleteMentorSkillDto cannot be null.");
+                }
+
+                await _mentorSkillService.DeleteMentorSkill(deleteDto);
                 return Ok("MentorSkill information successfully deleted.");
             }
             catch (Exception ex)
@@ -97,5 +84,40 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetMentorListBySkillIdAsync/{id}")]
+        public async Task<IActionResult> GetMentorListBySkillIdAsync(int skillId)
+        {
+            try
+            {
+                var value = await _mentorSkillService.GetMentorListBySkillIdAsync(skillId);
+                if (value == null)
+                {
+                    return NotFound($"MentorSkill information not found: {skillId}");
+                }
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving mentorSkill information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetSkillListByMentorIdAsync/{id}")]
+        public async Task<IActionResult> GetSkillListByMentorIdAsync(int mentorId)
+        {
+            try
+            {
+                var value = await _mentorSkillService.GetSkillListByMentorIdAsync(mentorId);
+                if (value == null)
+                {
+                    return NotFound($"MentorSkill information not found: {mentorId}");
+                }
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving mentorSkill information: " + ex.Message);
+            }
+        }
     }
 }

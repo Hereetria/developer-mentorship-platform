@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.AboutUsServices
 {
     using MentorProjectWebApp.Dtos.AboutUsDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
 

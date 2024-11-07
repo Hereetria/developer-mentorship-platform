@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.MembershipServices
 {
     using MentorProjectWebApp.Dtos.MembershipDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class MembershipService : GenericRepository<CreateMembershipDto, UpdateMembershipDto, ResultMembershipDto, ResultMembershipByIdDto, int>, IMembershipService

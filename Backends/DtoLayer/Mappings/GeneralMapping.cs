@@ -57,7 +57,7 @@ namespace DtoLayer.Mappings
             CreateMap<ArticleDetail, UpdateArticleDetailDto>().ReverseMap();
 
             CreateMap<ArticleTag, ResultArticleTagDto>().ReverseMap();
-            CreateMap<ArticleTag, ResultArticleTagByIdDto>().ReverseMap();
+            CreateMap<ArticleTag, DeleteArticleTagDto>().ReverseMap();
             CreateMap<ArticleTag, CreateArticleTagDto>().ReverseMap();
             CreateMap<ArticleTag, UpdateArticleTagDto>().ReverseMap();
 
@@ -92,12 +92,12 @@ namespace DtoLayer.Mappings
             CreateMap<MentorContent, UpdateMentorContentDto>().ReverseMap();
 
             CreateMap<MentorSkill, ResultMentorSkillDto>().ReverseMap();
-            CreateMap<MentorSkill, ResultMentorSkillByIdDto>().ReverseMap();
+            CreateMap<MentorSkill, DeleteMentorSkillDto>().ReverseMap();
             CreateMap<MentorSkill, CreateMentorSkillDto>().ReverseMap();
             CreateMap<MentorSkill, UpdateMentorSkillDto>().ReverseMap();
 
             CreateMap<MentorSocialMedia, ResultMentorSocialMediaDto>().ReverseMap();
-            CreateMap<MentorSocialMedia, ResultMentorSocialMediaByIdDto>().ReverseMap();
+            CreateMap<MentorSocialMedia, DeleteMentorSocialMediaDto>().ReverseMap();
             CreateMap<MentorSocialMedia, CreateMentorSocialMediaDto>().ReverseMap();
             CreateMap<MentorSocialMedia, UpdateMentorSocialMediaDto>().ReverseMap();
 

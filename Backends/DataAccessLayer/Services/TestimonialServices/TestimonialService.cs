@@ -4,12 +4,12 @@ using AutoMapper;
 using EntityLayer.Entities;
 using DataAccessLayer.Contexts;
 using DtoLayer.Dtos.TestimonialDtos;
-using DataAccessLayer.Repositories;
 using DataAccessLayer.Services.TestimonialServices;
+using DataAccessLayer.Repositories.Concrete;
 
 namespace DataAccessLayer.Services.TestimonialServices
 {
-    
+
     public class TestimonialService : GenericRepository<Testimonial, CreateTestimonialDto, UpdateTestimonialDto, ResultTestimonialDto, ResultTestimonialByIdDto, int>, ITestimonialService
 
     {

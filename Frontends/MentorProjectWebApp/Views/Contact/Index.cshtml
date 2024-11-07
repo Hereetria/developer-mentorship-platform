@@ -4,13 +4,5 @@
     Layout = "~/Views/UILayout/UILayout.cshtml";
 }
 
-<div class="container" data-aos="fade-up" data-aos-delay="100">
-
-    @await Component.InvokeAsync("_ContactMapComponentPartial")
-
-    @await Component.InvokeAsync("ContactViewComponents/_ContactInformationComponentPartial")
-
-    @await Component.InvokeAsync("ContactViewComponents/_ContactFormComponentPartial")
-
-</div>
+@await Component.InvokeAsync("_ContactFormComponentPartial")
 

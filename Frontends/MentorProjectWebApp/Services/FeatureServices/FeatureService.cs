@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.FeatureServices
 {
     using MentorProjectWebApp.Dtos.FeatureDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class FeatureService : GenericRepository<CreateFeatureDto, UpdateFeatureDto, ResultFeatureDto, ResultFeatureByIdDto, int>, IFeatureService

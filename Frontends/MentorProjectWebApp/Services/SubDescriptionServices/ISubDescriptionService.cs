@@ -1,5 +1,5 @@
 ﻿using MentorProjectWebApp.Dtos.SubDescriptionDtos;
-using MentorProjectWebApp.Repositories;
+using MentorProjectWebApp.Repositories.Abstract;
 
 namespace MentorProjectWebApp.Services.SubDescriptionServices
 {

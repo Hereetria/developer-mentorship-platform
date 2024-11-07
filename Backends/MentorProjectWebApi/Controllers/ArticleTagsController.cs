@@ -14,13 +14,11 @@ namespace MentorProjectWebApi.Controllers
 
     {
 
-        private readonly IMapper _mapper;
         private readonly IArticleTagService _articleTagService;
 
-        public ArticleTagsController(IArticleTagService articleTagService, IMapper mapper)
+        public ArticleTagsController(IArticleTagService articleTagService)
         {
             _articleTagService = articleTagService;
-            _mapper = mapper;
         }
 
         [HttpGet]
@@ -34,24 +32,6 @@ namespace MentorProjectWebApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "An error occurred while listing articleTag information: " + ex.Message);
-            }
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetArticleTagById(int id)
-        {
-            try
-            {
-                var value = await _articleTagService.GetByIdAsync(id);
-                if (value == null)
-                {
-                    return NotFound($"ArticleTag information not found: {id}");
-                }
-                return Ok(value);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "An error occurred while retrieving articleTag information: " + ex.Message);
             }
         }
 
@@ -69,12 +49,17 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArticleTag(int id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteArticleTag(DeleteArticleTagDto deleteDto)
         {
             try
             {
-                await _articleTagService.DeleteAsync(id);
+                if (deleteDto == null)
+                {
+                    return BadRequest("DeleteArticleTagDto cannot be null.");
+                }
+
+                await _articleTagService.DeleteArticleTag(deleteDto);
                 return Ok("ArticleTag information successfully deleted.");
             }
             catch (Exception ex)
@@ -97,5 +82,40 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetTagListByArticleId/{id}")]
+        public async Task<IActionResult> GetTagListByArticleId(int articleId)
+        {
+            try
+            {
+                var value = await _articleTagService.GetTagListByArticleIdAsync(articleId);
+                if (value == null)
+                {
+                    return NotFound($"Tag information not found: {articleId}");
+                }
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving Tag information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetArticleDetailListByTagId/{id}")]
+        public async Task<IActionResult> GetArticleDetailListByTagId(int tagId)
+        {
+            try
+            {
+                var value = await _articleTagService.GetArticleDetailListByTagIdAsync(tagId);
+                if (value == null)
+                {
+                    return NotFound($"Tag information not found: {tagId}");
+                }
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving Tag information: " + ex.Message);
+            }
+        }
     }
 }

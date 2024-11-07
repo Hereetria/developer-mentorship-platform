@@ -37,24 +37,6 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetMentorSocialMediaById(int id)
-        {
-            try
-            {
-                var value = await _mentorSocialMediaService.GetByIdAsync(id);
-                if (value == null)
-                {
-                    return NotFound($"MentorSocialMedia information not found: {id}");
-                }
-                return Ok(value);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "An error occurred while retrieving mentorSocialMedia information: " + ex.Message);
-            }
-        }
-
         [HttpPost]
         public async Task<IActionResult> CreateMentorSocialMedia(CreateMentorSocialMediaDto createMentorSocialMediaDto)
             {
@@ -69,12 +51,16 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMentorSocialMedia(int id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteMentorSocialMedia(DeleteMentorSocialMediaDto deleteDto)
         {
             try
             {
-                await _mentorSocialMediaService.DeleteAsync(id);
+                if (deleteDto == null)
+                {
+                    return BadRequest("DeleteMentorSkillDto cannot be null.");
+                }
+                await _mentorSocialMediaService.DeleteMentorSocialMedia(deleteDto);
                 return Ok("MentorSocialMedia information successfully deleted.");
             }
             catch (Exception ex)
@@ -97,5 +83,42 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+
+        [HttpGet("GetMentorListBySocialMediaIdAsync/{id}")]
+        public async Task<IActionResult> GetMentorListBySocialMediaIdAsync(int socialMediaId)
+        {
+            try
+            {
+                var value = await _mentorSocialMediaService.GetMentorListBySocialMediaIdAsync(socialMediaId);
+                if (value == null)
+                {
+                    return NotFound($"MentorSocialMedia information not found: {socialMediaId}");
+                }
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving mentorSocialMedia information: " + ex.Message);
+            }
+        }
+
+
+        [HttpGet("GetSocialMediaListByMentorIdAsync/{id}")]
+        public async Task<IActionResult> GetSocialMediaListByMentorIdAsync(int mentorId)
+        {
+            try
+            {
+                var value = await _mentorSocialMediaService.GetSocialMediaListByMentorIdAsync(mentorId);
+                if (value == null)
+                {
+                    return NotFound($"MentorSocialMedia information not found: {mentorId}");
+                }
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving mentorSocialMedia information: " + ex.Message);
+            }
+        }
     }
 }

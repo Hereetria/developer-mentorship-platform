@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.Repositories;
+﻿using DataAccessLayer.Repositories.Abstract;
 using DtoLayer.Dtos.FeatureDtos;
 using System;
 using System.Collections.Generic;

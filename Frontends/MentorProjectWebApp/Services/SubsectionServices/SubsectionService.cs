@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.SubsectionServices
 {
     using MentorProjectWebApp.Dtos.SubsectionDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class SubsectionService : GenericRepository<CreateSubsectionDto, UpdateSubsectionDto, ResultSubsectionDto, ResultSubsectionByIdDto, int>, ISubsectionService

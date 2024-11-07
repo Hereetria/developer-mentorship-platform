@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.ArticleServices
 {
     using MentorProjectWebApp.Dtos.ArticleDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class ArticleService : GenericRepository<CreateArticleDto, UpdateArticleDto, ResultArticleDto, ResultArticleByIdDto, int>, IArticleService

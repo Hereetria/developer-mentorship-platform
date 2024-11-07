@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.MessageServices
 {
     using MentorProjectWebApp.Dtos.MessageDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class MessageService : GenericRepository<CreateMessageDto, UpdateMessageDto, ResultMessageDto, ResultMessageByIdDto, int>, IMessageService

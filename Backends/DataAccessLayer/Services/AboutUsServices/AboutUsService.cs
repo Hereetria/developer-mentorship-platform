@@ -4,12 +4,12 @@ using AutoMapper;
 using EntityLayer.Entities;
 using DataAccessLayer.Contexts;
 using DtoLayer.Dtos.AboutUsDtos;
-using DataAccessLayer.Repositories;
 using DataAccessLayer.Services.AboutUsServices;
+using DataAccessLayer.Repositories.Concrete;
 
 namespace DataAccessLayer.Services.AboutUsServices
 {
-    
+
     public class AboutUsService : GenericRepository<AboutUs, CreateAboutUsDto, UpdateAboutUsDto, ResultAboutUsDto, ResultAboutUsByIdDto, int>, IAboutUsService
 
     {

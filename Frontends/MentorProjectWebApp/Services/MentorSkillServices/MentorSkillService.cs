@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.MentorSkillServices
 {
     using MentorProjectWebApp.Dtos.MentorSkillDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class MentorSkillService : GenericRepository<CreateMentorSkillDto, UpdateMentorSkillDto, ResultMentorSkillDto, ResultMentorSkillByIdDto, int>, IMentorSkillService

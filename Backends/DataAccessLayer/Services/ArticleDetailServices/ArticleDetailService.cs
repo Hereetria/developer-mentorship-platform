@@ -4,12 +4,12 @@ using AutoMapper;
 using EntityLayer.Entities;
 using DataAccessLayer.Contexts;
 using DtoLayer.Dtos.ArticleDetailDtos;
-using DataAccessLayer.Repositories;
 using DataAccessLayer.Services.ArticleDetailServices;
+using DataAccessLayer.Repositories.Concrete;
 
 namespace DataAccessLayer.Services.ArticleDetailServices
 {
-    
+
     public class ArticleDetailService : GenericRepository<ArticleDetail, CreateArticleDetailDto, UpdateArticleDetailDto, ResultArticleDetailDto, ResultArticleDetailByIdDto, int>, IArticleDetailService
 
     {

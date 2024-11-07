@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.MentorServices
 {
     using MentorProjectWebApp.Dtos.MentorDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class MentorService : GenericRepository<CreateMentorDto, UpdateMentorDto, ResultMentorDto, ResultMentorByIdDto, int>, IMentorService

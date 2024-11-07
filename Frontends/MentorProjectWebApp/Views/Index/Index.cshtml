@@ -4,8 +4,10 @@
     Layout = "~/Views/UILayout/UILayout.cshtml";
 }
 
-@await Component.InvokeAsync("IndexViewComponents/_IndexCarouselComponentPartial")
+@await Component.InvokeAsync("_IndexCarouselComponentPartial")
 
-@await Component.InvokeAsync("IndexViewComponents/_IndexClientsComponentPartial")
+@await Component.InvokeAsync("_IndexAboutUsComponentPartial")
 
-@await Component.InvokeAsync("IndexViewComponents/_IndexAboutUsComponentPartial")
+@await Component.InvokeAsync("_IndexClientsComponentPartial")
+
+@await Component.InvokeAsync("_ServicesGroupsComponentPartial")

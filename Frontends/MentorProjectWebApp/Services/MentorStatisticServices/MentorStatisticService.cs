@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.MentorStatisticServices
 {
     using MentorProjectWebApp.Dtos.MentorStatisticDtos;
-    using MentorProjectWebApp.Repositories;
+    using MentorProjectWebApp.Repositories.Concrete;
     using System.Net.Http;
 
     public class MentorStatisticService : GenericRepository<CreateMentorStatisticDto, UpdateMentorStatisticDto, ResultMentorStatisticDto, ResultMentorStatisticByIdDto, int>, IMentorStatisticService

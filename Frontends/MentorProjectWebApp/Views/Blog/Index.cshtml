@@ -4,8 +4,19 @@
     Layout = "~/Views/UILayout/UILayout.cshtml";
 }
 
-@await Component.InvokeAsync("BlogViewComponents/_BlogArticleComponentPartial")
+ <div class="container">
+    <div class="row">
+        <div class="col-lg-8">
 
-@await Component.InvokeAsync("BlogViewComponents/_BlogPaginationComponentPartial")
+@await Component.InvokeAsync("_BlogArticleComponentPartial")
 
-@await Component.InvokeAsync("BlogViewComponents/_BlogSidebarComponentPartial")
+@await Component.InvokeAsync("_BlogPaginationComponentPartial")
+
+</div>
+    <div class="col-lg-4 sidebar">
+
+@await Component.InvokeAsync("_BlogSidebarComponentPartial")
+
+        </div>
+    </div>
+</div>
