@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BussinessLayer.Services.SubDescriptionServices;
 using DataAccessLayer.Services.SubDescriptionServices;
 using DtoLayer.Dtos.SubDescriptionDtos;
 using Microsoft.AspNetCore.Http;
@@ -11,9 +12,9 @@ namespace MentorProjectWebApi.Controllers
     public class SubDescriptionsController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly ISubDescriptionService _subDescriptionService;
+        private readonly ISubDescriptionManager _subDescriptionService;
 
-        public SubDescriptionsController(ISubDescriptionService subDescriptionService, IMapper mapper)
+        public SubDescriptionsController(ISubDescriptionManager subDescriptionService, IMapper mapper)
         {
             _subDescriptionService = subDescriptionService;
             _mapper = mapper;

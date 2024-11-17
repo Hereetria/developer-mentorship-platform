@@ -1,5 +1,5 @@
 ﻿using MentorProjectWebApp.Dtos.SocialMediaDtos;
-using MentorProjectWebApp.Repositories.Concrete;
+using MentorProjectWebApp.Repositories;
 
 namespace MentorProjectWebApp.Services.SocialMediaServices
 {
@@ -8,5 +8,12 @@ namespace MentorProjectWebApp.Services.SocialMediaServices
         public SocialMediaService(HttpClient httpClient, IConfiguration configuration) : base(httpClient, configuration, "socialmedia")
         {
         }
+
+        public Task<List<ResultSocialMediaWithRelationsDto>> GetSocialMediaWithRelationsAsync()
+            => GetAllQueryAsync<ResultSocialMediaWithRelationsDto>("GetSocialMediaWithRelationsAsync");
+
+        public Task<ResultSocialMediaWithRelationsByIdDto> GetSocialMediaWithRelationsByIdAsync(int id)
+            => GetQueryByIdAsync<ResultSocialMediaWithRelationsByIdDto>("GetSocialMediaWithRelationsByIdAsync", id);
+
     }
 }

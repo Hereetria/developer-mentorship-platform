@@ -1,0 +1,12 @@
+﻿@model ICollection<ResultTagDto>
+
+<div class="tags-widget widget-item">
+
+    <h3 class="widget-title">Tags</h3>
+    @foreach (var item in @Model)
+    {
+        <ul>
+            <li><a href="#">@item.Name</a></li>
+        </ul>
+    }
+</div>

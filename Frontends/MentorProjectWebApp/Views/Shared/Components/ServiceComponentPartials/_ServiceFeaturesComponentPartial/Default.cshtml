@@ -1,0 +1,54 @@
+﻿@{
+    int outerCount = 0;
+    int innerCount = 0;
+}
+<section id="features" class="features section">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Features</h2>
+        <p>Check Our Features<br></p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+            <div class="col-lg-3">
+                <ul class="nav nav-tabs flex-column">
+                    @foreach (var item in Model)
+                    {
+                        outerCount++;
+                        <li class="nav-item @(outerCount == 1 ? "active show" : "")">
+                            <a class="nav-link" data-bs-toggle="tab" href="#features-tab-@outerCount">@item.Title</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-lg-9 mt-4 mt-lg-0">
+                <div class="tab-content">
+                    @{
+                        innerCount = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        @foreach (var i in item.SubDescriptions)
+                        {
+                            innerCount++;
+                            <div class="tab-pane @(innerCount == 1 ? "active show" : "")" id="features-tab-@innerCount">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3>@i.Header</h3>
+                                        <p class="fst-italic">@i.Description</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="@i.PhotoPath" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

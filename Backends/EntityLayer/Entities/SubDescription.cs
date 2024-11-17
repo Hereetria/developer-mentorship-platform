@@ -12,6 +12,8 @@ namespace EntityLayer.Entities
         public string Header { get; set; }
         public string Description { get; set; }
         public string PhotoPath { get; set; }
+
+        public int FeatureId { get; set; }
         public Feature Feature { get; set; }
     }
 }

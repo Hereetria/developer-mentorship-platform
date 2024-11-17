@@ -9,10 +9,9 @@ namespace EntityLayer.Entities
     public class SocialMedia
     {
         public int SocialMediaId { get; set; }
-        public string Name { get; set; }
-        public string IconPath { get; set; }
-        public string Url { get; set; }
+        public string ClassName { get; set; }
+        public string IconUrl { get; set; }
 
-        public List<MentorSocialMedia> mentorSocialMedias { get; set; }
+        public List<MentorSocialMedia> MentorSocialMedias { get; set; }
     }
 }

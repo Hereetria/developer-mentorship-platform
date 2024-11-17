@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.SkillDtos;
 using DataAccessLayer.Services.SkillServices;
+using BussinessLayer.Services.SkillServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly ISkillService _skillService;
+        private readonly ISkillManager _skillService;
 
-        public SkillsController(ISkillService skillService, IMapper mapper)
+        public SkillsController(ISkillManager skillService, IMapper mapper)
         {
             _skillService = skillService;
             _mapper = mapper;
@@ -94,6 +95,34 @@ namespace MentorProjectWebApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "An error occurred while updating skill information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetSkillWithRelationsAsync")]
+        public async Task<IActionResult> GetSkillWithRelationsAsync()
+        {
+            try
+            {
+                var values = await _skillService.GetSkillWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing skill information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetSkillWithRelationsById/{id}")]
+        public async Task<IActionResult> GetSkillsWithRelationsById(int id)
+        {
+            try
+            {
+                var values = await _skillService.GetSkillWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Skills information: " + ex.Message);
             }
         }
 

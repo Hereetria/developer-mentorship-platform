@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.MentorSocialMediaDtos;
 using DataAccessLayer.Services.MentorSocialMediaServices;
+using BussinessLayer.Services.MentorSocialMediaServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IMentorSocialMediaService _mentorSocialMediaService;
+        private readonly IMentorSocialMediaManager _mentorSocialMediaService;
 
-        public MentorSocialMediasController(IMentorSocialMediaService mentorSocialMediaService, IMapper mapper)
+        public MentorSocialMediasController(IMentorSocialMediaManager mentorSocialMediaService, IMapper mapper)
         {
             _mentorSocialMediaService = mentorSocialMediaService;
             _mapper = mapper;
@@ -51,16 +52,12 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteMentorSocialMedia(DeleteMentorSocialMediaDto deleteDto)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMentorSocialMedia(int id)
         {
             try
             {
-                if (deleteDto == null)
-                {
-                    return BadRequest("DeleteMentorSkillDto cannot be null.");
-                }
-                await _mentorSocialMediaService.DeleteMentorSocialMedia(deleteDto);
+                await _mentorSocialMediaService.DeleteAsync(id);
                 return Ok("MentorSocialMedia information successfully deleted.");
             }
             catch (Exception ex)
@@ -84,7 +81,7 @@ namespace MentorProjectWebApi.Controllers
         }
 
 
-        [HttpGet("GetMentorListBySocialMediaIdAsync/{id}")]
+        [HttpGet("GetMentorListBySocialMediaId/{socialMediaId}")]
         public async Task<IActionResult> GetMentorListBySocialMediaIdAsync(int socialMediaId)
         {
             try
@@ -103,7 +100,7 @@ namespace MentorProjectWebApi.Controllers
         }
 
 
-        [HttpGet("GetSocialMediaListByMentorIdAsync/{id}")]
+        [HttpGet("GetSocialMediaListByMentorId/{mentorId}")]
         public async Task<IActionResult> GetSocialMediaListByMentorIdAsync(int mentorId)
         {
             try
@@ -118,6 +115,38 @@ namespace MentorProjectWebApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "An error occurred while retrieving mentorSocialMedia information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetMentorSocialMediaWithRelations")]
+        public async Task<IActionResult> GetMentorSocialMediaWithRelations()
+        {
+            try
+            {
+                var value = await _mentorSocialMediaService.GetMentorSocialMediaWithRelationsAsync();
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while listing Mentor Social Media information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetMentorSocialMediaWithRelationsById/{id}")]
+        public async Task<IActionResult> GetMentorSocialMediaWithRelationsById(int id)
+        {
+            try
+            {
+                var value = await _mentorSocialMediaService.GetMentorSocialMediaWithRelationsByIdAsync(id);
+                if (value == null)
+                {
+                    return NotFound($"Mentor Social Media information not found: {id}");
+                }
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving Mentor Social Media information: " + ex.Message);
             }
         }
     }

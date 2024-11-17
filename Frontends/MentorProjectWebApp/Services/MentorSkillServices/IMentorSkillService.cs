@@ -1,14 +1,17 @@
-﻿using MentorProjectWebApp.Dtos.MentorDtos;
+﻿using MentorProjectWebApp.Dtos.ArticleTagDtos;
+using MentorProjectWebApp.Dtos.MentorDtos;
 using MentorProjectWebApp.Dtos.MentorSkillDtos;
 using MentorProjectWebApp.Dtos.SkillDtos;
-using MentorProjectWebApp.Repositories.Abstract;
+using MentorProjectWebApp.Repositories;
 
 namespace MentorProjectWebApp.Services.MentorSkillServices
 {
-    public interface IMentorSkillService : IGenericJunctionRepository<ResultMentorSkillDto, CreateMentorSkillDto, UpdateMentorSkillDto>
+    public interface IMentorSkillService : IGenericRepository<CreateMentorSkillDto, UpdateMentorSkillDto, ResultMentorSkillDto, ResultMentorSkillByIdDto, int>
     {
-        Task<List<ResultMentorDto>> GetMentorListSkillIdAsync(int skillId);
-        Task<List<ResultSkillDto>> GetSkillListByMentorIdAsync(int mentorId);
-        Task DeleteMentorSkillAsync(DeleteMentorSkillDto deleteDto);
+        Task<List<ResultMentorSkillWithRelationsDto>> GetMentorSkillWithRelationsAsync();
+        Task<ResultMentorSkillWithRelationsByIdDto> GetMentorSkillWithRelationsByIdAsync(int id);
+        Task<List<ResultMentorDto>> GetMentorListBySkillIdAsync(int id);
+        Task<List<ResultSkillDto>> GetSkillListByMentorIdAsync(int id);
+        Task<List<ResultMentorSkillWithRelationsByIdDto>> GetMentorSkillWithRelationsByMentorIdAsync(int id);
     }
 }

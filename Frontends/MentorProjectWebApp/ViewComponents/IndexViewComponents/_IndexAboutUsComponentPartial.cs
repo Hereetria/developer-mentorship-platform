@@ -7,7 +7,6 @@ namespace MentorProjectWebApp.ViewComponents.IndexViewComponents
     public class _IndexAboutUsComponentPartial : ViewComponent
     {
         private readonly string _componentPath;
-        private readonly IAboutUsService _aboutUsService;
 
         public _IndexAboutUsComponentPartial()
         {

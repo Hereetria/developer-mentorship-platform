@@ -1,6 +1,6 @@
 
 
-namespace MentorProjectWebApp.Dtos.FeatureDtos
+namespace MentorProjectWebApp.Dtos.EngagementDtos
 {
     public class CreateEngagementDto
     {

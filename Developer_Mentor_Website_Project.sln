@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentorProjectWebApi", "Back
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentorProjectWebApp", "Frontends\MentorProjectWebApp\MentorProjectWebApp.csproj", "{CBBF5F06-EF21-45B2-A006-85B6A5FB0548}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessLayer", "Backends\BussinessLayer\BussinessLayer.csproj", "{FB4E1E39-0BDF-4BA2-B919-1CB504B71E89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{CBBF5F06-EF21-45B2-A006-85B6A5FB0548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBBF5F06-EF21-45B2-A006-85B6A5FB0548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBBF5F06-EF21-45B2-A006-85B6A5FB0548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB4E1E39-0BDF-4BA2-B919-1CB504B71E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB4E1E39-0BDF-4BA2-B919-1CB504B71E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB4E1E39-0BDF-4BA2-B919-1CB504B71E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB4E1E39-0BDF-4BA2-B919-1CB504B71E89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{5C510CEE-153B-442A-A856-1F9B6643982F} = {0A4654C4-E701-4DBC-AA4E-8FEF1E0124EF}
 		{A591DD31-92C6-4DCB-B54A-CEA8AB9C0A34} = {0A4654C4-E701-4DBC-AA4E-8FEF1E0124EF}
 		{CBBF5F06-EF21-45B2-A006-85B6A5FB0548} = {CD179AAA-7651-447E-A070-18F4074363D1}
+		{FB4E1E39-0BDF-4BA2-B919-1CB504B71E89} = {0A4654C4-E701-4DBC-AA4E-8FEF1E0124EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD87DD7D-FE40-4611-874B-C72A20FC621D}

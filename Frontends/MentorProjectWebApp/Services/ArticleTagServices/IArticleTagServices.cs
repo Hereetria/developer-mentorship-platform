@@ -1,14 +1,15 @@
 ﻿using MentorProjectWebApp.Dtos.ArticleDetailDtos;
 using MentorProjectWebApp.Dtos.ArticleTagDtos;
 using MentorProjectWebApp.Dtos.TagDtos;
-using MentorProjectWebApp.Repositories.Abstract;
+using MentorProjectWebApp.Repositories;
 
 namespace MentorProjectWebApp.Services.ArticleTagServices
 {
-    public interface IArticleTagService : IGenericJunctionRepository<ResultArticleTagDto, CreateArticleTagDto, UpdateArticleTagDto>
+    public interface IArticleTagService : IGenericRepository<CreateArticleTagDto, UpdateArticleTagDto, ResultArticleTagDto, ResultArticleTagByIdDto, int>
     {
-        Task<List<ResultArticleDetailDto>> GetArticleDetailListByTagIdAsync(int tagId);
-        Task<List<ResultTagDto>> GetTagListByArticleIdAsync(int articleId);
-        Task DeleteArticleTagAsync(DeleteArticleTagDto deleteDto);
+        Task<List<ResultArticleTagWithRelationsDto>> GetArticleTagWithRelationsAsync();
+        Task<ResultArticleTagWithRelationsByIdDto> GetArticleTagWithRelationsByIdAsync(int id);
+        Task<List<ResultArticleDetailDto>> GetArticleDetailListByTagIdAsync(int id);
+        Task<List<ResultTagDto>> GetTagListByArticleIdAsync(int id);
     }
 }

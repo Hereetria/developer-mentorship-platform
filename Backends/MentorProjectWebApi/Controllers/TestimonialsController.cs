@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.TestimonialDtos;
 using DataAccessLayer.Services.TestimonialServices;
+using BussinessLayer.Services.TestimonialServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly ITestimonialService _testimonialService;
+        private readonly ITestimonialManager _testimonialService;
 
-        public TestimonialsController(ITestimonialService testimonialService, IMapper mapper)
+        public TestimonialsController(ITestimonialManager testimonialService, IMapper mapper)
         {
             _testimonialService = testimonialService;
             _mapper = mapper;

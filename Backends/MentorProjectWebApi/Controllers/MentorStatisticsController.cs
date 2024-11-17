@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.MentorStatisticDtos;
 using DataAccessLayer.Services.MentorStatisticServices;
+using BussinessLayer.Services.MentorStatisticServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IMentorStatisticService _mentorStatisticService;
+        private readonly IMentorStatisticManager _mentorStatisticService;
 
-        public MentorStatisticsController(IMentorStatisticService mentorStatisticService, IMapper mapper)
+        public MentorStatisticsController(IMentorStatisticManager mentorStatisticService, IMapper mapper)
         {
             _mentorStatisticService = mentorStatisticService;
             _mapper = mapper;
@@ -94,6 +95,20 @@ namespace MentorProjectWebApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "An error occurred while updating mentorStatistic information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetStatisticByMentorId/{mentorId}")]
+        public async Task<IActionResult> GetStatisticByMentorId(int mentorId)
+        {
+            try
+            {
+                var value = await _mentorStatisticService.GetStatisticByMentorIdAsync(mentorId);
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving mentorStatistic information: " + ex.Message);
             }
         }
 

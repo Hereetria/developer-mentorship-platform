@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.TagDtos;
 using DataAccessLayer.Services.TagServices;
+using BussinessLayer.Services.TagServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly ITagService _tagService;
+        private readonly ITagManager _tagService;
 
-        public TagsController(ITagService tagService, IMapper mapper)
+        public TagsController(ITagManager tagService, IMapper mapper)
         {
             _tagService = tagService;
             _mapper = mapper;
@@ -97,5 +98,32 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetTagWithRelationsAsync")]
+        public async Task<IActionResult> GetTagWithRelationsAsync()
+        {
+            try
+            {
+                var values = await _tagService.GetTagWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing tag information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetTagWithRelationsById/{id}")]
+        public async Task<IActionResult> GetTagsWithRelationsById(int id)
+        {
+            try
+            {
+                var values = await _tagService.GetTagWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Tags information: " + ex.Message);
+            }
+        }
     }
 }

@@ -4,6 +4,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.FeatureDtos;
 using DataAccessLayer.Services.FeatureServices;
+using BussinessLayer.Services.EngagementServices;
+using DtoLayer.Dtos.EngagementDtos;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +17,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IEngagementService _featureService;
+        private readonly IEngagementManager _featureService;
 
-        public EngagementsController(IEngagementService featureService, IMapper mapper)
+        public EngagementsController(IEngagementManager featureService, IMapper mapper)
         {
             _featureService = featureService;
             _mapper = mapper;

@@ -1,4 +1,5 @@
 ﻿using MentorProjectWebApp.Providers;
+using MentorProjectWebApp.Services.MessageServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MentorProjectWebApp.ViewComponents.IndexViewComponents
@@ -7,7 +8,7 @@ namespace MentorProjectWebApp.ViewComponents.IndexViewComponents
     {
         private readonly string _componentPath;
 
-        public _IndexClientsComponentPartial()
+        public _IndexClientsComponentPartial(IMessageService messageService)
         {
             _componentPath = ComponentPathProvider.GetComponentPath(GetType().Name);
         }

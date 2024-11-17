@@ -4,8 +4,10 @@ namespace MentorProjectWebApp.Controllers
 {
     public class AboutController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
+            ViewBag.x = id;
+            
             return View();
         }
     }

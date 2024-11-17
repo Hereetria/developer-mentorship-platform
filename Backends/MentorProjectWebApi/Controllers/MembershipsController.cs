@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.MembershipDtos;
 using DataAccessLayer.Services.MembershipServices;
+using BussinessLayer.Services.MembershipServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IMembershipService _membershipService;
+        private readonly IMembershipManager _membershipService;
 
-        public MembershipsController(IMembershipService membershipService, IMapper mapper)
+        public MembershipsController(IMembershipManager membershipService, IMapper mapper)
         {
             _membershipService = membershipService;
             _mapper = mapper;
@@ -94,6 +95,34 @@ namespace MentorProjectWebApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "An error occurred while updating membership information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetMembershipWithRelations")]
+        public async Task<IActionResult> GetMembershipWithRelations()
+        {
+            try
+            {
+                var values = await _membershipService.GetMembershipWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Membership information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetMembershipWithRelationsById/{id}")]
+        public async Task<IActionResult> GetMembershipWithRelationsById(int id)
+        {
+            try
+            {
+                var values = await _membershipService.GetMembershipWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Membership information: " + ex.Message);
             }
         }
 

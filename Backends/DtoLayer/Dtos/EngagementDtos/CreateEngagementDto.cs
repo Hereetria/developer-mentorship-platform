@@ -1,6 +1,6 @@
 
 
-namespace DtoLayer.Dtos.FeatureDtos
+namespace DtoLayer.Dtos.EngagementDtos
 {
     public class CreateEngagementDto
     {

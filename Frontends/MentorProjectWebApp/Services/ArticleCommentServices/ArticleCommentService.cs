@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.ArticleCommentServices
 {
     using MentorProjectWebApp.Dtos.ArticleCommentDtos;
-    using MentorProjectWebApp.Repositories.Concrete;
+    using MentorProjectWebApp.Repositories;
     using System.Net.Http;
 
     public class ArticleCommentService : GenericRepository<CreateArticleCommentDto, UpdateArticleCommentDto, ResultArticleCommentDto, ResultArticleCommentByIdDto, int>, IArticleCommentService

@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.ArticleDetailDtos;
 using DataAccessLayer.Services.ArticleDetailServices;
+using BussinessLayer.Services.ArticleDetailServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IArticleDetailService _articleDetailService;
+        private readonly IArticleDetailManager _articleDetailService;
 
-        public ArticleDetailsController(IArticleDetailService articleDetailService, IMapper mapper)
+        public ArticleDetailsController(IArticleDetailManager articleDetailService, IMapper mapper)
         {
             _articleDetailService = articleDetailService;
             _mapper = mapper;
@@ -97,5 +98,32 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetArticleDetailWithRelations")]
+        public async Task<IActionResult> GetArticleDetailWithRelations()
+        {
+            try
+            {
+                var values = await _articleDetailService.GetArticleDetailWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing articleDetail information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetArticleDetailWithRelations/{id}")]
+        public async Task<IActionResult> GetArticleDetailWithRelations(int id)
+        {
+            try
+            {
+                var values = await _articleDetailService.GetArticleDetailWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing articleDetail information: " + ex.Message);
+            }
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using MentorProjectWebApp.Providers;
-using MentorProjectWebApp.Services.MentorContentServices;
-using MentorProjectWebApp.Services.SubDescriptionServices;
+using MentorProjectWebApp.Services.MentorServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MentorProjectWebApp.ViewComponents.AboutViewComponents
@@ -8,17 +7,18 @@ namespace MentorProjectWebApp.ViewComponents.AboutViewComponents
     public class _AboutMentorComponentPartial : ViewComponent
     {
         private readonly string _componentPath;
-        private readonly IMentorContentService _mentorContentService;
-        private readonly ISubDescriptionService _subDescriptionService;
-        public _AboutMentorComponentPartial(IMentorContentService mentorContentService, ISubDescriptionService subDescriptionService)
+        private readonly IMentorService _mentorService;
+        public _AboutMentorComponentPartial(IMentorService mentorService)
         {
             _componentPath = ComponentPathProvider.GetComponentPath(GetType().Name);
-            _mentorContentService = mentorContentService;
-            _subDescriptionService = subDescriptionService;
+            _mentorService = mentorService;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            return View(_componentPath);
+            
+            
+            var values = await _mentorService.GetMentorWithRelationsByIdAsync(id);
+            return View(_componentPath, values);
         }
     }
 }

@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.SocialMediaDtos;
 using DataAccessLayer.Services.SocialMediaServices;
+using BussinessLayer.Services.SocialMediaServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly ISocialMediaService _socialMediaService;
+        private readonly ISocialMediaManager _socialMediaService;
 
-        public SocialMediasController(ISocialMediaService socialMediaService, IMapper mapper)
+        public SocialMediasController(ISocialMediaManager socialMediaService, IMapper mapper)
         {
             _socialMediaService = socialMediaService;
             _mapper = mapper;
@@ -97,5 +98,32 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetSocialMediaWithRelationsAsync")]
+        public async Task<IActionResult> GetSocialMediaWithRelationsAsync()
+        {
+            try
+            {
+                var values = await _socialMediaService.GetSocialMediaWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing socialMedia information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetSocialMediaWithRelationsById/{id}")]
+        public async Task<IActionResult> GetSocialMediasWithRelationsById(int id)
+        {
+            try
+            {
+                var values = await _socialMediaService.GetSocialMediaWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Social Medias information: " + ex.Message);
+            }
+        }
     }
 }

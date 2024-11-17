@@ -10,15 +10,14 @@ namespace MentorProjectWebApp.ViewComponents.BlogDetailViewComponents
     {
         private readonly string _componentPath;
         private readonly IArticleService _articleService;
-        private readonly IArticleDetailService _articleDetailService;
-        public _BlogDetailArticleComponentPartial(IArticleService articleService, IArticleDetailService articleDetailService)
+        public _BlogDetailArticleComponentPartial(IArticleService articleService)
         {
             _componentPath = ComponentPathProvider.GetComponentPath(GetType().Name);
             _articleService = articleService;
-            _articleDetailService = articleDetailService;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(int id)
         {
+            var values = await _articleService.GetArticleWithRelationsByIdAsync(id);
             return View(_componentPath);
         }
     }

@@ -13,9 +13,10 @@ namespace MentorProjectWebApp.ViewComponents.AboutViewComponents
             _componentPath = ComponentPathProvider.GetComponentPath(GetType().Name);
             _statisticService = statisticService;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            return View(_componentPath);
+            var values = await _statisticService.GetStatisticByMentorId(id);
+            return View(_componentPath, values);
         }
     }
 }

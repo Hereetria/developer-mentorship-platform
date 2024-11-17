@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.SubsectionDtos;
 using DataAccessLayer.Services.SubsectionServices;
+using BussinessLayer.Services.SubsectionServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly ISubsectionService _subsectionService;
+        private readonly ISubsectionManager _subsectionService;
 
-        public SubsectionsController(ISubsectionService subsectionService, IMapper mapper)
+        public SubsectionsController(ISubsectionManager subsectionService, IMapper mapper)
         {
             _subsectionService = subsectionService;
             _mapper = mapper;

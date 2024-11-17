@@ -1,5 +1,4 @@
-﻿using EntityLayer.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +10,15 @@ namespace EntityLayer.Entities
     public class Article
     {
         public int ArticleId { get; set; }
+        public string ImageUrl { get; set; }
         public string Header { get; set; }
         public string Author { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CommentCount { get; set; }
         public string Summary { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
         public ArticleDetail ArticleDetail { get; set; }
 

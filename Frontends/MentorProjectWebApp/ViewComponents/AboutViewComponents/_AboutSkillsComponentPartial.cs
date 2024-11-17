@@ -1,5 +1,5 @@
-﻿using DataAccessLayer.Services.MentorSkillServices;
-using MentorProjectWebApp.Providers;
+﻿using MentorProjectWebApp.Providers;
+using MentorProjectWebApp.Services.MentorSkillServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MentorProjectWebApp.ViewComponents.AboutViewComponents
@@ -14,9 +14,10 @@ namespace MentorProjectWebApp.ViewComponents.AboutViewComponents
             _componentPath = ComponentPathProvider.GetComponentPath(GetType().Name);
             _mentorSkillService = mentorSkillService;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            return View(_componentPath);
+            var values = await _mentorSkillService.GetMentorSkillWithRelationsByMentorIdAsync(id);
+            return View(_componentPath, values);
         }
     }
 }

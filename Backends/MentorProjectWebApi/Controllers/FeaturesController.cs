@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BussinessLayer.Services.FeatureServices;
 using DataAccessLayer.Services.FeatureServices;
 using DtoLayer.Dtos.FeatureDtos;
 using Microsoft.AspNetCore.Http;
@@ -12,9 +13,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IFeatureService _featureService;
+        private readonly IFeatureManager _featureService;
 
-        public FeaturesController(IFeatureService featureService, IMapper mapper)
+        public FeaturesController(IFeatureManager featureService, IMapper mapper)
         {
             _featureService = featureService;
             _mapper = mapper;
@@ -91,6 +92,34 @@ namespace MentorProjectWebApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "An error occurred while updating Feature information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetFeatureWithRelations")]
+        public async Task<IActionResult> GetFeatureWithRelations()
+        {
+            try
+            {
+                var values = await _featureService.GetFeatureWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Feature with Sub Descriptions information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetFeatureWithRelationsById/{id}")]
+        public async Task<IActionResult> GetFeatureWithRelationsById(int id)
+        {
+            try
+            {
+                var values = await _featureService.GetFeatureWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Feature information: " + ex.Message);
             }
         }
     }

@@ -12,6 +12,6 @@ namespace EntityLayer.Entities
         public string Name { get; set; }
         public int Count { get; set; }
 
-        public ICollection<ArticleDetail> ArticleDetails { get; set; }
+        public ICollection<Article> Article { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace EntityLayer.Entities
 {
     public class MentorSkill
     {
+        public int MentorSkillId { get; set; }
         public int MentorId { get; set; }
         public Mentor Mentor { get; set; }
 

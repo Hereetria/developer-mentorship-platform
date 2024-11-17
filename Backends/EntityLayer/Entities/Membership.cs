@@ -16,6 +16,6 @@ namespace EntityLayer.Entities
         [MaxLength(5, ErrorMessage = "Engagements cannot exceed 5 items.")]
         public ICollection<Engagement> Engagements { get; set; } = new List<Engagement>();
         public int? DiscountRate { get; set; }
-        public string Level { get; set; }
+        public string? Level { get; set; }
     }
 }

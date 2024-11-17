@@ -1,49 +1,28 @@
 ﻿using MentorProjectWebApp.Dtos.ArticleDetailDtos;
 using MentorProjectWebApp.Dtos.ArticleTagDtos;
 using MentorProjectWebApp.Dtos.TagDtos;
-using MentorProjectWebApp.Repositories.Concrete;
+using MentorProjectWebApp.Repositories;
+using System.Net.Http;
+using System.Reflection;
 
 namespace MentorProjectWebApp.Services.ArticleTagServices
 {
-    public class ArticleTagService : GenericJunctionRepository<ResultArticleTagDto, CreateArticleTagDto, UpdateArticleTagDto>, IArticleTagService
+    public class ArticleTagService : GenericRepository<CreateArticleTagDto, UpdateArticleTagDto, ResultArticleTagDto, ResultArticleTagByIdDto, int>, IArticleTagService
     {
         public ArticleTagService(HttpClient httpClient, IConfiguration configuration) : base(httpClient, configuration, "articletags")
         {
         }
 
-        public async Task DeleteArticleTagAsync(DeleteArticleTagDto deleteDto)
-        {
-            if (deleteDto == null)
-            {
-                throw new ArgumentNullException(nameof(deleteDto), "DeleteDto cannot be null.");
-            }
+        public Task<List<ResultArticleDetailDto>> GetArticleDetailListByTagIdAsync(int id)
+            => GetAllQueryByIdAsync<ResultArticleDetailDto>("GetArticleDetailListByTagId", id);
 
-            var queryParams = new Dictionary<string, object>();
+        public Task<List<ResultTagDto>> GetTagListByArticleIdAsync(int id)
+            => GetAllQueryByIdAsync<ResultTagDto>("GetTagListByArticleId", id);
 
-            var properties = deleteDto.GetType().GetProperties();
-            foreach (var property in properties)
-            {
-                var key = property.Name;
-                var value = property.GetValue(deleteDto);
+        public Task<List<ResultArticleTagWithRelationsDto>> GetArticleTagWithRelationsAsync()
+            => GetAllQueryAsync<ResultArticleTagWithRelationsDto>("GetArticleTagWithRelations");
 
-                if (value != null)
-                {
-                    queryParams.Add(key, value);
-                }
-            }
-
-            await DeleteAsync(queryParams);
-        }
-
-        public async Task<List<ResultArticleDetailDto>> GetArticleDetailListByTagIdAsync(int tagId)
-        {
-            return await GetRelatedEntitiesByIdAsync<ResultArticleDetailDto>("GetArticleDetailListByTagId", tagId);
-        }
-
-
-        public async Task<List<ResultTagDto>> GetTagListByArticleIdAsync(int articleId)
-        {
-            return await GetRelatedEntitiesByIdAsync<ResultTagDto>("")
-        }
+        public Task<ResultArticleTagWithRelationsByIdDto> GetArticleTagWithRelationsByIdAsync(int id)
+            => GetQueryByIdAsync<ResultArticleTagWithRelationsByIdDto>("GetArticleTagWithRelationsById", id);
     }
 }

@@ -71,6 +71,9 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CommentCount")
                         .HasColumnType("int");
 
@@ -81,11 +84,17 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ArticleId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Articles");
                 });
@@ -149,8 +158,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("Order")
                         .HasColumnType("int");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ArticleContentId");
 
@@ -170,28 +180,31 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.HasKey("ArticleDetailId");
 
                     b.HasIndex("ArticleId")
                         .IsUnique();
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("ArticleDetails");
                 });
 
             modelBuilder.Entity("EntityLayer.Entities.ArticleTag", b =>
                 {
+                    b.Property<int>("ArticleTagId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArticleTagId"));
+
                     b.Property<int>("ArticleDetailId")
                         .HasColumnType("int");
 
                     b.Property<int>("TagId")
                         .HasColumnType("int");
 
-                    b.HasKey("ArticleDetailId", "TagId");
+                    b.HasKey("ArticleTagId");
+
+                    b.HasIndex("ArticleDetailId");
 
                     b.HasIndex("TagId");
 
@@ -206,16 +219,13 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarouselId"));
 
-                    b.Property<string>("ButtonDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Header")
-                        .HasColumnType("int");
+                    b.Property<string>("Header")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -300,7 +310,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Level")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Price")
@@ -372,36 +381,47 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Entities.MentorSkill", b =>
                 {
+                    b.Property<int>("MentorSkillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MentorSkillId"));
+
                     b.Property<int>("MentorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rate")
                         .HasColumnType("int");
 
                     b.Property<int>("SkillId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                    b.HasKey("MentorSkillId");
 
-                    b.HasKey("MentorId", "SkillId");
+                    b.HasIndex("MentorId");
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("MentorSkills", null, t =>
-                        {
-                            t.HasCheckConstraint("CK_MentorSkill_Rate", "[Rate] >= 0 AND [Rate] <= 100");
-                        });
+                    b.ToTable("MentorSkills");
                 });
 
             modelBuilder.Entity("EntityLayer.Entities.MentorSocialMedia", b =>
                 {
+                    b.Property<int>("MentorSocialMediaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MentorSocialMediaId"));
+
                     b.Property<int>("MentorId")
                         .HasColumnType("int");
 
                     b.Property<int>("SocialMediaId")
                         .HasColumnType("int");
 
-                    b.HasKey("MentorId", "SocialMediaId");
+                    b.HasKey("MentorSocialMediaId");
+
+                    b.HasIndex("MentorId");
 
                     b.HasIndex("SocialMediaId");
 
@@ -517,15 +537,11 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SocialMediaId"));
 
-                    b.Property<string>("IconPath")
+                    b.Property<string>("ClassName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Url")
+                    b.Property<string>("IconUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -639,6 +655,17 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Testimonials");
                 });
 
+            modelBuilder.Entity("EntityLayer.Entities.Article", b =>
+                {
+                    b.HasOne("EntityLayer.Entities.Category", "Category")
+                        .WithMany("Article")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("EntityLayer.Entities.ArticleComment", b =>
                 {
                     b.HasOne("EntityLayer.Entities.ArticleDetail", "ArticleDetail")
@@ -675,15 +702,7 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityLayer.Entities.Category", "Category")
-                        .WithMany("ArticleDetails")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Article");
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("EntityLayer.Entities.ArticleTag", b =>
@@ -755,7 +774,7 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Entities.SocialMedia", "SocialMedia")
-                        .WithMany("mentorSocialMedias")
+                        .WithMany("MentorSocialMedias")
                         .HasForeignKey("SocialMediaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -820,7 +839,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Entities.Category", b =>
                 {
-                    b.Navigation("ArticleDetails");
+                    b.Navigation("Article");
                 });
 
             modelBuilder.Entity("EntityLayer.Entities.Feature", b =>
@@ -857,7 +876,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Entities.SocialMedia", b =>
                 {
-                    b.Navigation("mentorSocialMedias");
+                    b.Navigation("MentorSocialMedias");
                 });
 
             modelBuilder.Entity("EntityLayer.Entities.Tag", b =>

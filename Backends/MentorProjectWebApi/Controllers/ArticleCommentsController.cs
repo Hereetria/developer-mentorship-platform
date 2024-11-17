@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.ArticleCommentDtos;
 using DataAccessLayer.Services.ArticleCommentServices;
+using BussinessLayer.Services.ArticleCommentServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IArticleCommentService _articleCommentService;
+        private readonly IArticleCommentManager _articleCommentService;
 
-        public ArticleCommentsController(IArticleCommentService articleCommentService, IMapper mapper)
+        public ArticleCommentsController(IArticleCommentManager articleCommentService, IMapper mapper)
         {
             _articleCommentService = articleCommentService;
             _mapper = mapper;

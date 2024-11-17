@@ -10,6 +10,7 @@ namespace DtoLayer.Dtos.ArticleCommentDtos
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public string Content { get; set; }
+        public int? ParentCommentId { get; set; }
         public int ArticleDetailId { get; set; }
     }
 }

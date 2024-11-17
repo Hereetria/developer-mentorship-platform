@@ -13,9 +13,11 @@ namespace MentorProjectWebApp.ViewComponents.IndexViewComponents
             _componentPath = ComponentPathProvider.GetComponentPath(GetType().Name);
             _carouselService = carouselService;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(_componentPath);
+            
+            var values = await _carouselService.GetAllAsync();
+            return View(_componentPath, values);
         }
     }
 }

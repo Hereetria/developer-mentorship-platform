@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.ServiceDtos;
 using DataAccessLayer.Services.ServiceServices;
+using BussinessLayer.Services.ServiceServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IServiceService _serviceService;
+        private readonly IServiceManager _serviceService;
 
-        public ServicesController(IServiceService serviceService, IMapper mapper)
+        public ServicesController(IServiceManager serviceService, IMapper mapper)
         {
             _serviceService = serviceService;
             _mapper = mapper;

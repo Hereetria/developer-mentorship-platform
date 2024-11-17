@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.CategoryDtos;
 using DataAccessLayer.Services.CategoryServices;
+using BussinessLayer.Services.CategoryServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly ICategoryService _categoryService;
+        private readonly ICategoryManager _categoryService;
 
-        public CategoriesController(ICategoryService categoryService, IMapper mapper)
+        public CategoriesController(ICategoryManager categoryService, IMapper mapper)
         {
             _categoryService = categoryService;
             _mapper = mapper;
@@ -97,5 +98,32 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetCategoryWithRelations")]
+        public async Task<IActionResult> GetCategoryWithRelations()
+        {
+            try
+            {
+                var values = await _categoryService.GetCategoryWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Category with Article Detail information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetCategoryWithRelationsById/{id}")]
+        public async Task<IActionResult> GetCategoryWithRelationsById(int id)
+        {
+            try
+            {
+                var values = await _categoryService.GetCategoryWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Category with Article Detail information: " + ex.Message);
+            }
+        }
     }
 }

@@ -5,16 +5,16 @@ using EntityLayer.Entities;
 using DataAccessLayer.Contexts;
 using DtoLayer.Dtos.ServiceDtos;
 using DataAccessLayer.Services.ServiceServices;
-using DataAccessLayer.Repositories.Concrete;
+using DataAccessLayer.Repositories;
 
 namespace DataAccessLayer.Services.ServiceServices
 {
 
-    public class ServiceService : GenericRepository<Service, CreateServiceDto, UpdateServiceDto, ResultServiceDto, ResultServiceByIdDto, int>, IServiceService
+    public class ServiceDAL : GenericRepositoryDAL<Service, CreateServiceDto, UpdateServiceDto, ResultServiceDto, ResultServiceByIdDto, int>, IServiceDAL
 
     {
 
-        public ServiceService(Context context, IMapper mapper)
+        public ServiceDAL(Context context, IMapper mapper)
             : base(context, mapper)
         {
         }

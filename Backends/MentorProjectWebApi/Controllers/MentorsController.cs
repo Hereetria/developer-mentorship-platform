@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.MentorDtos;
 using DataAccessLayer.Services.MentorServices;
+using BussinessLayer.Services.MentorServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IMentorService _mentorService;
+        private readonly IMentorManager _mentorService;
 
-        public MentorsController(IMentorService mentorService, IMapper mapper)
+        public MentorsController(IMentorManager mentorService, IMapper mapper)
         {
             _mentorService = mentorService;
             _mapper = mapper;
@@ -97,5 +98,32 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetMentorWithRelations")]
+        public async Task<IActionResult> GetMentorWithRelations()
+        {
+            try
+            {
+                var values = await _mentorService.GetMentorWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Mentor information with relations: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetMentorWithRelationsById/{id}")]
+        public async Task<IActionResult> GetMentorWithRelationsById(int id)
+        {
+            try
+            {
+                var values = await _mentorService.GetMentorWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Mentor information: " + ex.Message);
+            }
+        }
     }
 }

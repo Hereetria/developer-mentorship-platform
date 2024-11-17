@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.ArticleContentDtos;
 using DataAccessLayer.Services.ArticleContentServices;
+using BussinessLayer.Services.ArticleContentServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IArticleContentService _articleContentService;
+        private readonly IArticleContentManager _articleContentService;
 
-        public ArticleContentsController(IArticleContentService articleContentService, IMapper mapper)
+        public ArticleContentsController(IArticleContentManager articleContentService, IMapper mapper)
         {
             _articleContentService = articleContentService;
             _mapper = mapper;

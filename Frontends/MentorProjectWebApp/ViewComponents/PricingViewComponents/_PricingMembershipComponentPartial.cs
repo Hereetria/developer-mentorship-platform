@@ -1,4 +1,6 @@
 ﻿using DataAccessLayer.Services.FeatureServices;
+using MentorProjectWebApp.Dtos.FeatureDtos;
+using MentorProjectWebApp.Dtos.MembershipDtos;
 using MentorProjectWebApp.Providers;
 using MentorProjectWebApp.Services.MembershipServices;
 using Microsoft.AspNetCore.Mvc;
@@ -9,16 +11,15 @@ namespace MentorProjectWebApp.ViewComponents.PricingViewComponents
     {
         private readonly string _componentPath;
         private readonly IMembershipService _membershipService;
-        private readonly IEngagementService _engagementService;
-        public _PricingMembershipComponentPartial(IMembershipService membershipService, IEngagementService engagementService)
+        public _PricingMembershipComponentPartial(IMembershipService membershipService)
         {
             _componentPath = ComponentPathProvider.GetComponentPath(GetType().Name);
             _membershipService = membershipService;
-            _engagementService = engagementService;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(_componentPath);
+            var values = await _membershipService.GetMembershipWithRelationsAsync();
+            return View(_componentPath, values);
         }
     }
 }

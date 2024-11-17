@@ -8,6 +8,7 @@ namespace EntityLayer.Entities
 {
     public class MentorSocialMedia
     {
+        public int MentorSocialMediaId { get; set; }
         public int MentorId { get; set; }
         public Mentor Mentor { get; set; }
 

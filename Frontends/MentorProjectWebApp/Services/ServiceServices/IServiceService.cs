@@ -1,7 +1,7 @@
 ﻿namespace MentorProjectWebApp.Services.ServiceServices
 {
     using MentorProjectWebApp.Dtos.ServiceDtos;
-    using MentorProjectWebApp.Repositories.Abstract;
+    using MentorProjectWebApp.Repositories;
 
     public interface IServiceService : IGenericRepository<CreateServiceDto, UpdateServiceDto, ResultServiceDto, ResultServiceByIdDto, int>
     {

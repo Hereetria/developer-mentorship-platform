@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.MessageDtos;
 using DataAccessLayer.Services.MessageServices;
+using BussinessLayer.Services.MessageServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IMessageService _messageService;
+        private readonly IMessageManager _messageService;
 
-        public MessagesController(IMessageService messageService, IMapper mapper)
+        public MessagesController(IMessageManager messageService, IMapper mapper)
         {
             _messageService = messageService;
             _mapper = mapper;

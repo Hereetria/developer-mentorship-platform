@@ -6,6 +6,6 @@ namespace MentorProjectWebApp.Dtos.MembershipDtos
     {
         public string Title { get; set; }
         public int Price { get; set; }
-        public string Level { get; set; }
+        public string? Level { get; set; }
     }
 }

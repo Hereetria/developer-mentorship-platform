@@ -1,11 +1,12 @@
 
 using DtoLayer.Dtos.ServiceDtos;
-using DataAccessLayer.Repositories.Abstract;
+using DataAccessLayer.Repositories;
+using EntityLayer.Entities;
 
 namespace DataAccessLayer.Services.ServiceServices
 {
 
-    public interface IServiceService : IGenericRepository<CreateServiceDto, UpdateServiceDto, ResultServiceDto, ResultServiceByIdDto, int>
+    public interface IServiceDAL : IGenericRepositoryDAL<Service, CreateServiceDto, UpdateServiceDto, ResultServiceDto, ResultServiceByIdDto, int>
 
     {
 

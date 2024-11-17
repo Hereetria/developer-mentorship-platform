@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.MentorContentDtos;
 using DataAccessLayer.Services.MentorContentServices;
+using BussinessLayer.Services.MentorContentServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IMentorContentService _mentorContentService;
+        private readonly IMentorContentManager _mentorContentService;
 
-        public MentorContentsController(IMentorContentService mentorContentService, IMapper mapper)
+        public MentorContentsController(IMentorContentManager mentorContentService, IMapper mapper)
         {
             _mentorContentService = mentorContentService;
             _mapper = mapper;
@@ -97,5 +98,32 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetMentorContentWithRelations")]
+        public async Task<IActionResult> GetMentorContentWithRelations()
+        {
+            try
+            {
+                var values = await _mentorContentService.GetMentorContentWithRelationsAsync();
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Mentor Content with Subsections information: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetMentorContentWithRelationsById/{id}")]
+        public async Task<IActionResult> GetMentorContentWithRelationsById(int id)
+        {
+            try
+            {
+                var values = await _mentorContentService.GetMentorContentWithRelationsByIdAsync(id);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing Mentor Content information: " + ex.Message);
+            }
+        }
     }
 }

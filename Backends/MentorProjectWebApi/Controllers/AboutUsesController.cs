@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using DtoLayer.Dtos.AboutUsDtos;
 using DataAccessLayer.Services.AboutUsServices;
+using BussinessLayer.Services.AboutUsServices;
 
 namespace MentorProjectWebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace MentorProjectWebApi.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IAboutUsService _aboutUsService;
+        private readonly IAboutUsManager _aboutUsService;
 
-        public AboutUsesController(IAboutUsService aboutUsService, IMapper mapper)
+        public AboutUsesController(IAboutUsManager aboutUsService, IMapper mapper)
         {
             _aboutUsService = aboutUsService;
             _mapper = mapper;
@@ -43,7 +44,7 @@ namespace MentorProjectWebApi.Controllers
             try
             {
                 var value = await _aboutUsService.GetByIdAsync(id);
-                if (value == null)
+                if (value == null) 
                 {
                     return NotFound($"AboutUs information not found: {id}");
                 }
