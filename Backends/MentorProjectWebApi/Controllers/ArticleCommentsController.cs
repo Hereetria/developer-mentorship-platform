@@ -98,5 +98,19 @@ namespace MentorProjectWebApi.Controllers
             }
         }
 
+        [HttpGet("GetArticleCommentsByArticleDetailId/{articleDetailId}")]
+        public async Task<IActionResult> GetArticleCommentsByArticleDetailId(int articleDetailId)
+        {
+            try
+            {
+                var values = await _articleCommentService.GetArticleCommentsByArticleDetailIdAsync(articleDetailId);
+                return Ok(values);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while listing articleComment information: " + ex.Message);
+            }
+        }
+
     }
 }

@@ -17,7 +17,11 @@
             <section>
                 <div class="widgets-container">
 
-@await Component.InvokeAsync("_BlogSidebarComponentPartial")
+                    @await Component.InvokeAsync("_BlogSidebarSearchComponentPartial")
+
+                    @await Component.InvokeAsync("_BlogSidebarCategoriesComponentPartial")
+
+                    @await Component.InvokeAsync("_BlogSidebarTagsComponentPartial")
 
                 </div>
             </section>

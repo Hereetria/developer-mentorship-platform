@@ -6,5 +6,6 @@ namespace BussinessLayer.Services.ArticleCommentServices
 {
     public interface IArticleCommentManager : IGenericRepositoryBL<ArticleComment, CreateArticleCommentDto, UpdateArticleCommentDto, ResultArticleCommentDto, ResultArticleCommentByIdDto, int>
     {
+        Task<List<ResultArticleCommentByIdDto>> GetArticleCommentsByArticleDetailIdAsync(int articleId);
     }
 }

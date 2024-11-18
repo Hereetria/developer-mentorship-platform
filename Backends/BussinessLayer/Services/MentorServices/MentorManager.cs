@@ -38,6 +38,8 @@ namespace BussinessLayer.Services.MentorServices
                     .Include(m => m.MentorSocialMedias)
                         .ThenInclude(ms => ms.SocialMedia)
                     .Include(m => m.MentorContents)
+                    .Include(m => m.MentorContents)
+                        .ThenInclude(m => m.Subsections)
                     .Include(m => m.MentorStatistic)
                     .Include(m => m.MentorSkills)
                         .ThenInclude(ms => ms.Skill)

@@ -4,8 +4,9 @@ namespace MentorProjectWebApp.Controllers
 {
     public class BlogDetailController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
+            ViewBag.X = id;
             return View();
         }
     }

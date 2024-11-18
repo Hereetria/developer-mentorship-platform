@@ -20,7 +20,7 @@
                     @foreach (var item in Model.MentorContents)
                     {
                         count++;
-                        <li><a class="nav-link @(count == 1 ? "active" : "")" data-bs-toggle="pill" href="@("#about-2-tab" + count)">@item.Header</a></li>
+                        <li><a class="nav-link @(count == 1 ? "active show" : "")" data-bs-toggle="pill" href="@("#about-2-tab" + count)">@item.Header</a></li>
                     }
                 </ul>
 
@@ -33,7 +33,7 @@
                 @foreach (var item in Model.MentorContents) 
                 {
                         count++;
-                        <div class="tab-pane fade @(count == 1 ? "active" : "")" id="@("about-2-tab" + count)">
+                        <div class="tab-pane fade @(count == 1 ? "active show" : "")" id="@("about-2-tab" + count)">
 
                         <p class="fst-italic">@item.Summary</p>
                         @foreach (var i in item.Subsections)

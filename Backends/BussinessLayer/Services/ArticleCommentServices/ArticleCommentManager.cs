@@ -12,5 +12,15 @@ namespace BussinessLayer.Services.ArticleCommentServices
             : base(repositoryDALFactory)
         {
         }
+
+        public Task<List<ResultArticleCommentByIdDto>> GetArticleCommentsByArticleDetailIdAsync(int articleId)
+        {
+            var result = GetEntitiesByQueryAsync<ResultArticleCommentByIdDto>(
+                query: q => q
+                .Where(ac => ac.ArticleDetailId == articleId)    
+            );
+
+            return result;
+        }
     }
 }

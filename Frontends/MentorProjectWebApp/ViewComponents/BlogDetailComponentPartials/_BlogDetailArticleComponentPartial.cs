@@ -18,7 +18,7 @@ namespace MentorProjectWebApp.ViewComponents.BlogDetailViewComponents
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
             var values = await _articleService.GetArticleWithRelationsByIdAsync(id);
-            return View(_componentPath);
+            return View(_componentPath, values);
         }
     }
 }

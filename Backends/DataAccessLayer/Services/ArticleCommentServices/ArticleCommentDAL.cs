@@ -6,6 +6,7 @@ using DataAccessLayer.Contexts;
 using DtoLayer.Dtos.ArticleCommentDtos;
 using DataAccessLayer.Services.ArticleCommentServices;
 using DataAccessLayer.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Services.ArticleCommentServices
 {
@@ -19,5 +20,14 @@ namespace DataAccessLayer.Services.ArticleCommentServices
         {
         }
 
+        public Task<List<ResultArticleCommentByIdDto>> TGetArticleCommentsByArticleDetailIdAsync(int articleDetailId)
+        {
+            var result = TGetEntitiesByQueryAsync<ResultArticleCommentByIdDto>(
+                query: q => q
+                .Where(ac => ac.ArticleDetailId == articleDetailId)
+            );
+
+            return result;
+        }
     }
 }

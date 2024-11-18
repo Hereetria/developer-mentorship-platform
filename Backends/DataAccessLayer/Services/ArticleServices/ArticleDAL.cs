@@ -26,13 +26,6 @@ namespace DataAccessLayer.Services.ArticleServices
             var result = await TGetEntitiesByQueryAsync<ResultArticleWithRelationsDto>(
                 query: q => q
                     .Include(a => a.ArticleDetail)
-                .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleComments)
-                .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleContents)
-                .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleTags)
-                    .ThenInclude(ad => ad.Tag)
             );
 
             return result;
@@ -43,13 +36,7 @@ namespace DataAccessLayer.Services.ArticleServices
             var result = await TGetEntityByQueryAsync<ResultArticleWithRelationsByIdDto>(
                 query: q => q
                 .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleComments)
-                .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleContents)
-                .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleTags)
-                    .ThenInclude(ad => ad.Tag)
-                    .Where(a => a.ArticleId == id)
+                .Where(a => a.ArticleId == id)
             );
 
             return result;

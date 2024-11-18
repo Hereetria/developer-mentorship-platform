@@ -19,7 +19,7 @@ namespace DataAccessLayer.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var connectionString = @"Server=DESKTOP-A7AFDHF\SQLEXPRESS;Initial Catalog=MentorProject;Integrated Security=true;TrustServerCertificate=True;";
+                var connectionString = @"Server=LAPTOP-BIS8RAQN\SQLEXPRESS;Initial Catalog=MentorProject;Integrated Security=true;TrustServerCertificate=True;";
                 optionsBuilder.UseSqlServer(connectionString);
             }
         }

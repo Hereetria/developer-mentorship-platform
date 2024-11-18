@@ -5,6 +5,7 @@
 
     public interface IArticleCommentService : IGenericRepository<CreateArticleCommentDto, UpdateArticleCommentDto, ResultArticleCommentDto, ResultArticleCommentByIdDto, int>
     {
+        Task<List<ResultArticleCommentByIdDto>> GetArticleCommentsByArticleDetailIdAsync(int id);
     }
 
 }

@@ -14,9 +14,10 @@ namespace MentorProjectWebApp.ViewComponents.BlogDetailViewComponents
             _componentPath = ComponentPathProvider.GetComponentPath(GetType().Name);
             _articleCommentService = articleCommentService;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            return View(_componentPath);
+            var values = await _articleCommentService.GetArticleCommentsByArticleDetailIdAsync(id);
+            return View(_componentPath, values);
         }
     }
 }

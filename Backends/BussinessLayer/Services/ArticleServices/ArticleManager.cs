@@ -19,12 +19,6 @@ namespace BussinessLayer.Services.ArticleServices
             var result = await GetEntitiesByQueryAsync<ResultArticleWithRelationsDto>(
         query: q => q
             .Include(a => a.ArticleDetail)
-                .ThenInclude(ad => ad.ArticleComments)
-            .Include(a => a.ArticleDetail)
-                .ThenInclude(ad => ad.ArticleContents)
-            .Include(a => a.ArticleDetail)
-                .ThenInclude(ad => ad.ArticleTags)
-                .ThenInclude(ad => ad.Tag)
 
         );
             return result;
@@ -35,16 +29,7 @@ namespace BussinessLayer.Services.ArticleServices
             var result = await GetEntityByQueryAsync<ResultArticleWithRelationsByIdDto>(
                 query: q => q
                 .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleComments)
-                .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleContents)
-                .Include(a => a.ArticleDetail)
-                    .ThenInclude(ad => ad.ArticleTags)
-                    .ThenInclude(ad => ad.Tag)
-    .Include(a => a.ArticleDetail)
-    .ThenInclude(ad => ad.ArticleContents)
-    .ThenInclude(ac => ac.Subsections)
-                    .Where(a => a.ArticleId == id)
+                .Where(a => a.ArticleId == id)
             );
 
             return result;
