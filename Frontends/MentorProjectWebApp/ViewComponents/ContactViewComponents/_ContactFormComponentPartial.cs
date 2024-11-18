@@ -1,4 +1,5 @@
-﻿using MentorProjectWebApp.Providers;
+﻿using MentorProjectWebApp.Dtos.MessageDtos;
+using MentorProjectWebApp.Providers;
 using MentorProjectWebApp.Services.MessageServices;
 using Microsoft.AspNetCore.Mvc;
 

@@ -14,28 +14,18 @@
 
 <!-- Hide For Main Page -->
 <script>
+    window.onload = function () {
+        // Sayfa URL'sini al
+        var currentUrl = window.location.pathname.toLowerCase();
 
-    document.addEventListener("DOMContentLoaded", function () {
-        if (window.location.pathname.includes("index")) {
-            var pageTitleDiv = document.querySelector('.page-title');
-
-            if (pageTitleDiv) {
-                pageTitleDiv.style.display = 'none';
+        // URL'de yalnızca 'Index' varsa, 'page-title' elementini gizle
+        if (currentUrl === '/index' || currentUrl === '/') {
+            var pageTitle = document.querySelector('.page-title');
+            if (pageTitle) {
+                pageTitle.style.display = 'none';
             }
         }
-
-        // Add refresh condition (example)
-        if (!sessionStorage.getItem("refreshed")) {
-            sessionStorage.setItem("refreshed", true);
-            location.reload(); // Force page refresh
-        }
-    });
-
-
-    document.addEventListener("DOMContentLoaded", hidePageTitle);  // Runs on page load
-    window.addEventListener("beforeunload", hidePageTitle);
-
-
-
+    };
 </script>
+
 

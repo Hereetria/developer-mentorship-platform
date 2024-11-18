@@ -15,13 +15,17 @@
 @await Component.InvokeAsync("_BlogDetailCommentFormComponentPartial")
 
 </div>
-    <div class="col-lg-4 sidebar">
+        <div class="col-lg-4 sidebar">
             <section>
                 <div class="widgets-container">
 
-@await Component.InvokeAsync("_BlogSidebarComponentPartial")
+                    @await Component.InvokeAsync("_BlogSidebarSearchComponentPartial")
 
-            </div>
+                    @await Component.InvokeAsync("_BlogSidebarCategoriesComponentPartial")
+
+                    @await Component.InvokeAsync("_BlogSidebarTagsComponentPartial")
+
+                </div>
             </section>
         </div>
     </div>

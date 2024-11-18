@@ -11,7 +11,7 @@
 
     </head>
 <body>
-    @await Component.InvokeAsync("_UILayoutPageTitleComponentPartial")
+    @await Component.InvokeAsync("_UILayoutPageTitleComponentPartial", new { title = ViewBag.title })
 
     @await Component.InvokeAsync("_UILayoutNavbarComponentPartial")
 

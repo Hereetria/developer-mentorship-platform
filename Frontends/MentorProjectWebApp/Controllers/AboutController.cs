@@ -6,6 +6,7 @@ namespace MentorProjectWebApp.Controllers
     {
         public IActionResult Index(int id)
         {
+            TempData["Title"] = "About";
             ViewBag.x = id;
             
             return View();

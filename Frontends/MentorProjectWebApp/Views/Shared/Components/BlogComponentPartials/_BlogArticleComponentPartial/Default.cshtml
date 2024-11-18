@@ -20,9 +20,9 @@
 
                         <div class="meta-top">
                             <ul>
-                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">@item.Author</a></li>
-                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01">@item.CreatedDate</time></a></li>
-                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">@item.CommentCount</a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="@($"blogdetail/index/{item.ArticleId}")">@item.Author</a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="@($"blogdetail/index/{item.ArticleId}")"><time datetime="2022-01-01">@item.CreatedDate</time></a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="@($"blogdetail/index/{item.ArticleId}")">@item.CommentCount</a></li>
                             </ul>
                         </div>
 
@@ -30,7 +30,7 @@
                             <p>@item.Summary</p>
 
                             <div class="read-more">
-                                <a href="blog-details.html">Read More</a>
+                                <a href="@($"blogdetail/index/{item.ArticleId}")">Read More</a>
                             </div>
                         </div>
 

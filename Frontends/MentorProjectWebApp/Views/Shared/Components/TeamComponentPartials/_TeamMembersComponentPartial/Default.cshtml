@@ -8,8 +8,9 @@
                 
                     @foreach (var item in Model)
                     {
-                        <a href="@($"/about/index/{item.MentorId}")">
+                <a href="@($"/about/index/{item.MentorId}")" style="all: unset; color: inherit; text-decoration: none; cursor: pointer;">
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    
                         <div class="team-member d-flex align-items-start">
                             <div class="pic"><img src="@item.PhotoPath" class="img-fluid" alt=""></div>
                             <div class="member-info">
@@ -19,14 +20,15 @@
                             <div class="social">
                                 @foreach (var i in item.SocialMedias)
                                 {
-                                    <i class="bi @i.IconUrl"></i>
+                                        <a><i class="bi @i.IconUrl"></i></a>
                                 }
 
                             </div>
                             </div>
                         </div>
+
                         </div>
-                        </a>
+                </a>
                     }
             </div>
         </div>

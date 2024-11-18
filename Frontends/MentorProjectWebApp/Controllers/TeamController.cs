@@ -6,6 +6,7 @@ namespace MentorProjectWebApp.Controllers
     {
         public IActionResult Index()
         {
+            TempData["Title"] = "Team";
             return View();
         }
     }
