@@ -23,7 +23,7 @@ The project is built using a **ready-made frontend template**, combined with a *
 - 🗄️ **Database Design** — Well-structured relational design ensuring consistency and performance  
 - 🧠 **Repository Pattern + DI** — Repository abstraction and dependency injection for clean, testable code
 - 🧩 **View Components** — Used to create a clean, modular, and maintainable structure on the frontend
-- 
+  
 <br>
 
 ## 🖼️ Screenshots
