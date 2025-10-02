@@ -1,4 +1,4 @@
-# 🧑‍🏫 Developer Mentorship Platform — Software Consulting Simulation
+# 🧠 Developer Mentorship Platform — Software Consulting Simulation
 
 <br>
 
