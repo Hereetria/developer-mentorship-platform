@@ -1,24 +1,82 @@
-# Mentorlar ve Yazılım Danışmanlık Hizmeti Simülasyonu
+# 🧑‍🏫 Developer Mentorship Platform — Software Consulting Simulation
 
-Bu proje, mentorların site üyeliği ile yazılım danışmanlık hizmeti verdiği bir şirketin simülasyonudur. Kullanıcılar mentorlarla iletişime geçebilir ve yazılım geliştirme, kariyer rehberliği gibi alanlarda danışmanlık alabilirler. 
-Projenin en önemli odak noktalarından biri, veritabanında doğru ilişkiler kurarak veri tutarlılığını ve performansını sağlamaktır.
+<br>
 
-## Proje Özellikleri
+[![Report Bug](https://img.shields.io/badge/🐛_Report_Bug-red?style=for-the-badge)](../../issues/new?labels=bug)
+[![Request Feature](https://img.shields.io/badge/✨_Request_Feature-blue?style=for-the-badge)](../../issues/new?labels=enhancement)
 
-- **Kullanıcı Yönetimi**: Mentorlar ve danışmanlık almak isteyen kullanıcılar için üyelik sistemi mevcuttur.
-- **Yazılım Danışmanlığı**: Kullanıcılar, ihtiyaçlarına göre mentorlarla yazılım geliştirme ve kariyer tavsiyeleri konusunda danışmanlık alabilir.
-- **Çok Katmanlı Mimari**: Proje, sürdürülebilirlik ve genişletilebilirlik sağlamak için n katmanlı mimari kullanılarak tasarlanmıştır.
-- **Veritabanı Tasarımı**: Veritabanı yapısı, doğru ilişkileri kurarak veri tutarlılığına ve performansa dikkat edilerek tasarlanmıştır.
-  
-## Teknolojiler
+<br>
 
-- **Backend**: ASP.NET Core
-- **Frontend**: HTML, CSS, JavaScript (Şablon, "Sailor" adıyla internette mevcuttur)
-- **Veritabanı**: Microsoft SQL Server (
-- **Diğer Teknolojiler**: Entity Framework, Dependency Injection, LINQ, vb.
+## 📌 Project Overview
 
-## Kullanılan Mimari ve Desenler
+**Developer Mentorship Platform** is a simulation of a company that provides **software consulting and mentorship services** through an online platform.  
+Mentors can register on the site to offer guidance, while users can reach out for **software development support** and **career mentoring**.  
 
-- **Katmanlı Mimari (Layered Architecture)**: Proje, katmanlı mimari desenine uygun olarak yapılandırılmıştır. Veri erişim, iş mantığı ve sunum katmanları birbirinden bağımsız bir şekilde tasarlanmıştır.
-- **Repository Pattern**: Veritabanı işlemleri için Repository Pattern kullanılarak, veri erişimi soyutlanmıştır.
-- **Dependency Injection**: Uygulama bileşenlerinin birbirine bağımlılığını yönetmek için Dependency Injection (DI) kullanılmıştır.
+<br>
+
+## ✨ Features
+
+- 👤 **User Management** — Membership system for both mentors and mentees  
+- 💬 **Software Consulting** — Users can connect with mentors for development help and career advice  
+- 🧱 **Layered Architecture** — Built with n-tier architecture for scalability and maintainability  
+- 🗄️ **Database Design** — Well-structured relational design ensuring consistency and performance  
+- 🧠 **Repository Pattern + DI** — Repository abstraction and dependency injection for clean, testable code
+
+<br>
+
+
+## 🖼️ Screenshots
+
+> Example pages and features (Sailor template-based frontend + API endpoints)
+
+<p align="center">
+  <img src="./public/screenshots/homepage.png" width="45%">
+  <img src="./public/screenshots/mentors.png" width="45%">
+</p>
+
+<br>
+
+## 🧰 Tech Stack
+
+<p>
+  <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="C# Badge" height="32" />
+  <img src="https://img.shields.io/badge/ASP.NET_Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt="ASP.NET Core Badge" height="32" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5 Badge" height="32" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3 Badge" height="32" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript Badge" height="32" />
+  <img src="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL Server Badge" height="32" />
+</p>
+
+
+<br>
+
+## 📥 Installation
+
+### Prerequisites
+- .NET SDK 7.0+  
+- Microsoft SQL Server
+
+### Setup
+```bash
+git clone [repository-url]
+cd developer-mentorship-platform
+
+dotnet restore
+dotnet ef database update   # Apply migrations
+dotnet run
+```
+
+Then open the application in your browser.  
+Mentors and users can register, and consulting features can be tested through the UI and API.
+
+<br>
+
+## 📜 License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+This project is licensed under the terms described in the [LICENSE](./LICENSE) file.
+
+---
+
+© 2025 Yusuf Okan Sirkeci — [Hereetria](https://github.com/Hereetria)
