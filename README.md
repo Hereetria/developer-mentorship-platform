@@ -26,12 +26,21 @@ Mentors can register on the site to offer guidance, while users can reach out fo
 
 
 ## 🖼️ Screenshots
-
-> Example pages and features (Sailor template-based frontend + API endpoints)
+## 🖼️ Screenshots
+Shown below in order:  
+**1. Landing 1** · **2. Landing 2** · **3. Services**<br>
+**4. Blog** · **5. Pricing & Footer** · **6. Contact**
 
 <p align="center">
-  <img src="./public/screenshots/homepage.png" width="45%">
-  <img src="./public/screenshots/mentors.png" width="45%">
+  <img src="./docs/screenshots/landing-1.png" width="32%">
+  <img src="./docs/screenshots/landing-2.png" width="32%">
+  <img src="./docs/screenshots/services.png" width="32%">
+</p>
+
+<p align="center">
+  <img src="./docs/screenshots/blog.png" width="32%">
+  <img src="./docs/screenshots/pricing-and-footer.png" width="32%">
+  <img src="./docs/screenshots/contact.png" width="32%">
 </p>
 
 <br>
